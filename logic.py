@@ -3,8 +3,6 @@ import sys
 import os
 
 
-file_n = "main"
-
 class Interpreture:
     def create_file(self, file_name):
         try:
@@ -59,4 +57,3 @@ class Interpreture:
 
 
 i = Interpreture()
-i.create_file(file_n)
