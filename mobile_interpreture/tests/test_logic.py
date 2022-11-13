@@ -3,7 +3,7 @@ import os
 import sys
 
 
-# Import path for logic
+# Add path for logic
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 from mobile.logic import Interpreture
