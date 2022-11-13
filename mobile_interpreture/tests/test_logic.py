@@ -3,11 +3,12 @@ import os
 import sys
 
 
+# Import path for logic
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 from mobile.logic import Interpreture
 
 
 class TestIntepreture(unittest.TestCase):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
