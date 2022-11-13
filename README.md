@@ -2,7 +2,7 @@
 -
 -
 
-# Run project
+# Build project
 -
 -
 
