@@ -23,12 +23,14 @@ def test_edit_file():
     i.edit_file(txt, name)
     with open('files/%s.py' % name, "r") as file:
         assert txt == file.read()
-    i.del_file(name)
-    i.create_file(name)
 
 def test_read_file():
     with open('files/%s.py' % name, "r") as file:
         assert i.read_file(name) == file.read()
+
+def test_run_file():
+    i.run_file(name)
+    assert i.run_file(name) == "hello world"
 
 def test_del_file():
     i.del_file(name)
