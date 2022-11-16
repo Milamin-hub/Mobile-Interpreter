@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
 
 
 class InterpretureApp(App):
@@ -7,13 +8,22 @@ class InterpretureApp(App):
     def __init__(self) -> None:
         super().__init__()
 
-    def build(self) -> Button:
+    def create_button(self, txt, btn, font_s=30):
         """ Build button on interface"""
         return Button(
-            text="button",
-            font_size=30,
-            on_press = self.btn_press
+            text=txt,
+            font_size=font_s,
+            on_press = btn
         )
+
+    def build(self) -> BoxLayout:
+        """ Build button on interface"""
+        bl = BoxLayout()
+        btn1 = self.create_button("button", self.btn_press)
+        btn2 = self.create_button("button 2", self.btn_press)
+        bl.add_widget(btn1)
+        bl.add_widget(btn2)
+        return bl
     
     def btn_press(self, instance) -> None:
         """ 
