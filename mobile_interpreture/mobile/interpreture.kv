@@ -1,29 +1,40 @@
 
 
 <Container>:
-    orientation: "vertical"
-    padding: 5
-    spacing: 5
+    rows: 3
+    orientation: 'vertical'
+    padding: 2
 
-    Label:
-        id: 1
-        text: "Interpreture"
-        size_hint: 0.1, 0.1
-        pos_hint: {"center_x": 0.5, "center_y": 0.1}
-    Button:
-        text: "Button"
-        size_hint: 0.5, 0.1
-        pos_hint: {"center_x": 0.5, "center_y": 0.3}
-    Button:
-        text: "Button 2"
-        size_hint: 0.5, 0.1
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-    Button:
-        text: "Button 3"
-        size_hint: 0.5, 0.1
-        pos_hint: {"center_x": 0.5, "center_y": 0.7}
-    Button:
-        text: "Button 4"
-        size_hint: 0.5, 0.1
-        pos_hint: {"center_x": 0.5, "center_y": 0.9}
+
+    GridLayout:
+        cols: 2
+        size_hint: 1, 0.1
+
+        BoxLayout:
+            size_hint: 0.4, 0.1
+            Label:
+                text: 'Mobile Interpreture'
+                font_size: 15
+
+        BoxLayout:
+            size_hint: 0.6, 0.2
+            Button:
+                text: 'open'
+            Button:
+                text: 'save'
+            Button:
+                text: 'run'
+
+    AnchorLayout:
+        size_hint: 1, 0.8
+        TextInput:
+            text: '1'
     
+    BoxLayout:
+        size_hint: 1, 0.2
+        Label:
+            text: '>>'
+            halign: 'left'
+            valign: 'top'
+            text_size: self.size            
+            
