@@ -13,7 +13,8 @@ class InterpretureApp(App):
         super().__init__()
 
     def build(self) -> Container:
-        """ ... """
+        """build window from class container to which 
+        the file with styles and components is attached interpreture.kv """
         return Container()
 
 
