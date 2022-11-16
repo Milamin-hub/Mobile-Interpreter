@@ -21,6 +21,8 @@
             size_hint: 0.6, 0.1
             Button:
                 text: 'open'
+                on_release:
+                    root.read_file('project')
             Button:
                 text: 'save'
             Button:
@@ -30,13 +32,13 @@
         size_hint: 1, 0.8
         TextInput:
             id: editor
-            text: '1'
+            # text: root.read_file("project")
 
     BoxLayout:
         size_hint: 1, 0.2
         Label:
             id: console
-            text: '>>'
+            text: '>>' # root.read_file('project')
             halign: 'left'
             valign: 'top'
             text_size: self.size

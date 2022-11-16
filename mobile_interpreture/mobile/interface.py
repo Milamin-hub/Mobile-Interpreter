@@ -1,9 +1,15 @@
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+import sys
+import os
+# Add path for logic
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+
+from mobile.logic import Interpreture
 
 
-class Container(BoxLayout):
+class Container(BoxLayout, Interpreture):
     pass
 
 

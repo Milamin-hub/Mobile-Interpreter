@@ -7,7 +7,7 @@ from kivy.config import Config
 Config.set("kivy", "keyboardmode", 
 "systemandnock")
 
-class MobileApp(InterpretureApp, Interpreture):
+class MobileApp(InterpretureApp):
     """ Mobile app сombines methods of two classes using inheritance """
     def __init__(self) -> None:
         super().__init__()
