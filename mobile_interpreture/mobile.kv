@@ -1,45 +1,23 @@
 
 
 <Container>:
-    rows: 3
-    orientation: 'vertical'
-    padding: 2
+    orientation: "vertical"
 
+    MDTopAppBar:
+        title: "Title"
+        type: "bottom"
+        left_action_items: [["menu", lambda x: x]]
+    
+    MDTabs:
+        id: tabs
+        on_tab_switch: app.on_tab_switch(*args)
 
-    GridLayout:
-        cols: 2
-        size_hint: 1, 0.1
+    MDBoxLayout:
+        orientation: "vertical"
 
-        BoxLayout:
-            size_hint: 0.4, 0.1
-            Label:
-                halign: 'center'
-                text: 'Mobile Interpreture'
-                font_size: 15
+<Tab>
 
-        BoxLayout:
-            size_hint: 0.6, 0.1
-            Button:
-                text: 'open'
-                on_release:
-                    root.read_file('project')
-            Button:
-                text: 'save'
-            Button:
-                text: 'run'
-
-    AnchorLayout:
-        size_hint: 1, 0.8
-        TextInput:
-            id: editor
-            # text: root.read_file("project")
-
-    BoxLayout:
-        size_hint: 1, 0.2
-        Label:
-            id: console
-            text: '>>' # root.read_file('project')
-            halign: 'left'
-            valign: 'top'
-            text_size: self.size
-
+    MDLabel:
+        id: label
+        text: "Tab 0"
+        halign: "center"
