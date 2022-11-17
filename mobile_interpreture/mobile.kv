@@ -2,22 +2,16 @@
 
 <Container>:
     orientation: "vertical"
-
-    MDTopAppBar:
-        title: "Title"
-        type: "bottom"
-        left_action_items: [["menu", lambda x: x]]
-    
+    MDBoxLayout:
+        size_hint: 1, 0.1
     MDTabs:
+        size_hint: 1, 0.9
         id: tabs
         on_tab_switch: app.on_tab_switch(*args)
 
-    MDBoxLayout:
-        orientation: "vertical"
-
 <Tab>
-
-    MDLabel:
+    TextInput:
+        size_hint: 1, 1
         id: label
-        text: "Tab 0"
-        halign: "center"
+        text: ""
+        halign: "left"
