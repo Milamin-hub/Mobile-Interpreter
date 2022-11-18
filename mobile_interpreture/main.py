@@ -19,7 +19,7 @@ class MobileApp(UIApp):
     def on_tab_switch(
         self, instance_tabs, instance_tab, instance_tab_label, tab_text
     ):
-        pass
+        self.root.ids.tabs.title = tab_text
 
 
 def main():

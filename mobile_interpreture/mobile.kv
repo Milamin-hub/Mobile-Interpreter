@@ -28,9 +28,12 @@
                         root.on_create()
                 MDRaisedButton:
                     text: "save"
+                    on_release:
+                        root.on_save()
             
     MDTabs:
         size_hint: 1, 0.9
+        title: app.title
         id: tabs
         on_tab_switch: app.on_tab_switch(*args)
 

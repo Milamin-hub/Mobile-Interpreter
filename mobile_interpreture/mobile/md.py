@@ -26,6 +26,12 @@ class Container(MDBoxLayout, Interpreture):
 
     def on_create(self):
         self.create_file(self.ids.cfile.text)
+    
+    def take_name(self):
+        return self.ids.tabs.title
+    
+    def on_save(self):
+        pass
         
 
 
