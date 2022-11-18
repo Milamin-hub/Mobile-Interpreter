@@ -2,8 +2,33 @@
 
 <Container>:
     orientation: "vertical"
+    
     MDBoxLayout:
         size_hint: 1, 0.1
+
+        MDTopAppBar:
+            size_hint: 0.3, 1
+            title: "Mobile Python"
+            adaptive_height: True
+            md_bg_color: app.theme_cls.accent_color
+
+        MDTopAppBar:
+            size_hint: 0.7, 1
+
+            MDBoxLayout:
+                TextInput:
+                    md_bg_color: app.theme_cls.accent_color
+                    id: cfile
+                    halign: "left"
+                    valign: "middle"
+
+                MDRaisedButton:
+                    text: "create"
+                    on_release:
+                        root.on_create()
+                MDRaisedButton:
+                    text: "save"
+            
     MDTabs:
         size_hint: 1, 0.9
         id: tabs
@@ -12,6 +37,6 @@
 <Tab>
     TextInput:
         size_hint: 1, 1
-        id: label
+        id: fname
         text: ""
         halign: "left"

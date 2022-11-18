@@ -1,14 +1,6 @@
-from mobile.logic import Interpreture
-from mobile.md import UIApp, Container
-
-from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.tab import MDTabsBase
+from mobile.md import UIApp, Container, Tab
 
 import os
-
-
-class Tab(MDFloatLayout, MDTabsBase):
-    '''Class implementing content for a tab.'''
 
 
 class MobileApp(UIApp):
@@ -23,14 +15,11 @@ class MobileApp(UIApp):
         for file in os.listdir(path="files"):
             self.root.ids.tabs.add_widget(Tab(title="%s" % file))
 
+    # Change
     def on_tab_switch(
         self, instance_tabs, instance_tab, instance_tab_label, tab_text
     ):
-        file = open('files/%s' % tab_text, "r").readlines()
-        text = ""
-        for i in file:
-            text += i
-        instance_tab.ids.label.text = text
+        pass
 
 
 def main():

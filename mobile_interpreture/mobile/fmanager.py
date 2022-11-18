@@ -25,8 +25,8 @@ class Interpreture:
         """
 
         try:
-            if '%s.py' % file_name not in os.listdir(path="files"):
-                with open('files/%s.py' % file_name, "w"):
+            if '%s' % file_name not in os.listdir(path="files"):
+                with open('files/%s' % file_name, "w"):
                     return "Успешно создан"
             else:
                 return "Файл не существует"
@@ -42,7 +42,7 @@ class Interpreture:
         """
 
         try:
-            with open('files/%s.py' % file_name, "a") as file:
+            with open('files/%s' % file_name, "a") as file:
                 file.write(str(txt))
                 return "Файл успешно изменен"
         except Exception as e:
@@ -72,8 +72,8 @@ class Interpreture:
         """
 
         try:
-            if '%s.py' % file_name in os.listdir(path="files"):
-                file = open('files/%s.py' % file_name, "r").readlines()
+            if '%s' % file_name in os.listdir(path="files"):
+                file = open('files/%s' % file_name, "r").readlines()
                 text = ""
                 for i in file:
                     text += i
@@ -91,8 +91,8 @@ class Interpreture:
         """
 
         try:
-            if '%s.py' % file_name in os.listdir(path="files"):
-                os.remove("files/%s.py" % file_name)
+            if '%s' % file_name in os.listdir(path="files"):
+                os.remove("files/%s" % file_name)
                 return "Файл успешно удален"
             else:
                 return "Файл не существует"
