@@ -18,16 +18,21 @@ class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+    
+    def take_text(self) -> str:
+        txt = self.ids.fname.text
+        return txt
 
 
 class Container(MDBoxLayout, Interpreture):
     def __init__(self, **kwargs) -> None:
+        self.tab = Tab()
         super().__init__(**kwargs)
 
     def on_create(self):
         self.create_file(self.ids.cfile.text)
     
-    def take_name(self):
+    def take_name_tabs(self) -> str:
         return self.ids.tabs.title
     
     def on_save(self):
@@ -43,7 +48,7 @@ class UIApp(MDApp):
         """build window from class container to which 
         the file with styles and components is attached interpreture.kv """
         self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Red"
+        self.theme_cls.primary_palette = "Purple"
         return Container()
         
 
