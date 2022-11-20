@@ -7,11 +7,13 @@
         MDTopAppBar:
             size_hint: 0.3, 1
             title: "Mobile Python"
-            md_bg_color: app.theme_cls.accent_color
+            md_bg_color: app.theme_cls.primary_dark
+        MDTopAppBar:
+            size_hint: 0.7, 1
+            md_bg_color: app.theme_cls.primary_dark
             MDBoxLayout:
                 spacing: 10
                 TextInput:
-                    md_bg_color: app.theme_cls.accent_color
                     id: cfile
                     halign: "left"
                     valign: "middle"
@@ -40,5 +42,6 @@
         halign: "left"
     MDRaisedButton:
         text: "show"
+        halign: "right"
         on_release:
             root.take_text()
