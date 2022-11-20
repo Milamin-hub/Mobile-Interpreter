@@ -20,9 +20,7 @@ class MobileApp(UIApp):
         self, instance_tabs, instance_tab, instance_tab_label, tab_text
     ):
         self.root.ids.tabs.title = tab_text
-        self.root.ids.tabs.text = instance_tab.ids.fname.text
         
-
 
 def main():
     mobile = MobileApp()

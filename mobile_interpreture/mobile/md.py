@@ -26,7 +26,6 @@ class Tab(MDFloatLayout, MDTabsBase):
 
 class Container(MDBoxLayout, Interpreture):
     def __init__(self, **kwargs) -> None:
-        self.tab = Tab()
         super().__init__(**kwargs)
 
     def on_create(self):

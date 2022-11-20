@@ -2,14 +2,12 @@
 
 <Container>:
     orientation: "vertical"
-
-    
-    
     MDBoxLayout:
         size_hint: 1, 0.1
-
         MDTopAppBar:
-
+            size_hint: 0.3, 1
+            title: "Mobile Python"
+            md_bg_color: app.theme_cls.accent_color
             MDBoxLayout:
                 spacing: 10
                 TextInput:
@@ -25,8 +23,8 @@
                 MDRaisedButton:
                     text: "save"
                     on_release:
-                        root.take_text_tabs()
-            
+                        root.on_save()
+                
     MDTabs:
         size_hint: 1, 0.9
         title: app.title
@@ -40,3 +38,7 @@
         id: fname
         text: ""
         halign: "left"
+    MDRaisedButton:
+        text: "show"
+        on_release:
+            root.take_text()
