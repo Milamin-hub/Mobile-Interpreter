@@ -17,29 +17,16 @@
                     id: cfile
                     halign: "left"
                     valign: "middle"
-
                 MDRaisedButton:
                     text: "create"
                     on_release:
                         root.on_create()
                 MDRaisedButton:
-                    text: "save"
+                    text: "open"
                     on_release:
-                        root.on_save()
-    MDTabs:
-        size_hint: 1, 0.9
-        title: app.title
-        text: ""
-        id: tabs
-        on_tab_switch: app.on_tab_switch(*args)
-<Tab>
+                        root.open_file_manager()
     TextInput:
         size_hint: 1, 1
         id: fname
         text: ""
         halign: "left"
-    MDRaisedButton:
-        text: "show"
-        halign: "right"
-        on_release:
-            root.input_text()

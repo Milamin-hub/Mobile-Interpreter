@@ -1,25 +1,15 @@
-from mobile.md import UIApp, Container, Tab
+from mobile.md import UIApp
 
 import os
 
 
 class MobileApp(UIApp):
     """ Mobile app сombines methods of two classes using inheritance """
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
     
-    def build(self) -> Container:
+    def build(self):
         return super().build()
-
-    def on_start(self):
-        for file in os.listdir(path="mobile_interpreture/assets")[::-1]:
-            self.root.ids.tabs.add_widget(Tab(title="%s" % file))
-
-    # Change
-    def on_tab_switch(
-        self, instance_tabs, instance_tab, instance_tab_label, tab_text
-    ):
-        self.root.ids.tabs.title = tab_text
 
 
 def main():

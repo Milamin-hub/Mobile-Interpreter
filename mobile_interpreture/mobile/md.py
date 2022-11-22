@@ -1,38 +1,37 @@
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.filemanager import MDFileManager
 from kivymd.app import MDApp
 
 import sys
 import os
 
 
-# Add methods
-class Tab(MDFloatLayout, MDTabsBase):
-    '''Class implementing content for a tab.'''
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-    
-    def input_text(self) -> str:
-        txt = self.ids.fname.text
-        print(txt)
-
-
 class Container(MDBoxLayout):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
+        self.file_manager_obj = MDFileManager(
+            select_path=self.select_path,
+            exit_manager=self.exit_manager,
+            preview=True
+        )
+    
+    def select_path(self, path):
+        print(path)
+        self.exit_manager()
+
+    def open_file_manager(self):
+        self.file_manager_obj.show("mobile_interpreture/assets")
+
+    def exit_manager(self):
+        self.file_manager_obj.close()
 
     def on_create(self):
-        with open('mobile_interpreture/assets/%s' % self.ids.cfile.text, "w"):
-            return "Успешно создан"
-    
-    def take_name_tabs(self) -> str:
-        return self.ids.tabs.title
-    
-    def on_save(self):
         try:
-            print(self.take_name_tabs())
-        except ValueError as e:
+            with open('mobile_interpreture/assets/%s' % self.ids.cfile.text, "w"):
+                return "Успешно создан"
+        except Exception as e:
             print(e)
         
 
