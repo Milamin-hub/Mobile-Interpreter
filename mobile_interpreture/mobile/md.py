@@ -1,5 +1,10 @@
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
+from kivymd.uix.tab import MDTabsBase
+from kivymd.uix.floatlayout import MDFloatLayout
+from plyer import filechooser
+from kivymd.toast import toast
+
 from kivymd.app import MDApp
 
 import sys
@@ -12,14 +17,15 @@ class Container(MDBoxLayout):
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
-            preview=True
+            preview=False,
         )
 
     def file_manager_open(self):
-        self.file_manager.show("mobile_interpreture/assets")
+        self.file_manager.show("mobile_interpreture/assets/")
 
     def select_path(self, path):
         self.exit_manager()
+        print(path)
         
     def exit_manager(self, *args):
         self.file_manager.close()
