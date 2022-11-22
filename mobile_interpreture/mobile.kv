@@ -15,18 +15,25 @@
                 spacing: 10
                 TextInput:
                     id: cfile
+                    enabled: False
+                    opacity: 0
                     halign: "left"
                     valign: "middle"
                 MDRaisedButton:
-                    text: "create"
+                    text: "save"
                     on_release:
-                        root.on_create()
+                        root.save_file()
                 MDRaisedButton:
                     text: "open"
                     on_release:
                         root.file_manager_open()
+
     TextInput:
         size_hint: 1, 1
         id: fname
         text: ""
+        enabled: False
+        opacity: 0
         halign: "left"
+            
+

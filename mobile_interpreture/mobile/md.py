@@ -14,6 +14,7 @@ import os
 class Container(MDBoxLayout):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
+        self.path = ""
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
@@ -23,12 +24,28 @@ class Container(MDBoxLayout):
     def file_manager_open(self):
         self.file_manager.show("mobile_interpreture/assets/")
 
-    def select_path(self, path):
-        self.exit_manager()
-        print(path)
+    def select_path(self, path) -> str:
+        try:
+            self.exit_manager()
+            file = open('%s' % path, "r").readlines()
+            text = ""
+            for i in file:
+                text += i
+            self.ids.fname.opacity = 1
+            self.ids.fname.enabled = True
+            self.ids.fname.text = text
+            self.path = path
+        except IsADirectoryError:
+            pass
         
     def exit_manager(self, *args):
         self.file_manager.close()
+
+    def save_file(self):
+        name = os.path.basename(self.path)
+        with open('mobile_interpreture/assets/%s' % name, "w") as file:
+            file.write(self.ids.fname.text)
+    
         
 
 class UIApp(MDApp):
