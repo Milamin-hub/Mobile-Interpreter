@@ -7,41 +7,38 @@ import sys
 import os
 
 
-# Add path for logic
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
-
-from mobile_interpreture.mobile.fmanager import Interpreture
-
-
 # Add methods
 class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
     
-    def take_text(self) -> str:
+    def input_text(self) -> str:
         txt = self.ids.fname.text
-        return txt
+        print(txt)
 
 
-class Container(MDBoxLayout, Interpreture):
+class Container(MDBoxLayout):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
     def on_create(self):
-        self.create_file(self.ids.cfile.text)
+        with open('mobile_interpreture/assets/%s' % self.ids.cfile.text, "w"):
+            return "Успешно создан"
     
     def take_name_tabs(self) -> str:
         return self.ids.tabs.title
     
     def on_save(self):
-        pass
+        try:
+            print(self.take_name_tabs())
+        except ValueError as e:
+            print(e)
         
 
-
 class UIApp(MDApp):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
     def build(self) -> Container:
         """build window from class container to which 

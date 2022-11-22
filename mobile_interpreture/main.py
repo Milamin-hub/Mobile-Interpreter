@@ -12,7 +12,7 @@ class MobileApp(UIApp):
         return super().build()
 
     def on_start(self):
-        for file in os.listdir(path="files")[::-1]:
+        for file in os.listdir(path="mobile_interpreture/assets")[::-1]:
             self.root.ids.tabs.add_widget(Tab(title="%s" % file))
 
     # Change
@@ -20,7 +20,7 @@ class MobileApp(UIApp):
         self, instance_tabs, instance_tab, instance_tab_label, tab_text
     ):
         self.root.ids.tabs.title = tab_text
-        
+
 
 def main():
     mobile = MobileApp()

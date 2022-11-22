@@ -26,14 +26,12 @@
                     text: "save"
                     on_release:
                         root.on_save()
-                
     MDTabs:
         size_hint: 1, 0.9
         title: app.title
         text: ""
         id: tabs
         on_tab_switch: app.on_tab_switch(*args)
-
 <Tab>
     TextInput:
         size_hint: 1, 1
@@ -44,4 +42,4 @@
         text: "show"
         halign: "right"
         on_release:
-            root.take_text()
+            root.input_text()
