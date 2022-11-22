@@ -4,21 +4,28 @@
     orientation: "vertical"
     MDBoxLayout:
         size_hint: 1, 0.1
-        MDTopAppBar:
+        md_bg_color: app.theme_cls.primary_dark
+        Label:
             size_hint: 0.3, 1
-            title: "Mobile Python"
+            id: filen
+            text: "Welcome"
             md_bg_color: app.theme_cls.primary_dark
         MDTopAppBar:
             size_hint: 0.7, 1
             md_bg_color: app.theme_cls.primary_dark
             MDBoxLayout:
-                spacing: 10
-                TextInput:
-                    id: cfile
-                    enabled: False
-                    opacity: 0
-                    halign: "left"
+                spacing: 5
+                Label:
+                    text_size: self.size
+                    size_hint: 1, 0.2
+                    halign: "right"
                     valign: "middle"
+                    text: ''
+                    size: self.size
+                MDRaisedButton:
+                    text: "run"
+                    on_release:
+                        root.run_file()
                 MDRaisedButton:
                     text: "save"
                     on_release:
@@ -27,13 +34,20 @@
                     text: "open"
                     on_release:
                         root.file_manager_open()
-
-    TextInput:
-        size_hint: 1, 1
-        id: fname
-        text: ""
-        enabled: False
-        opacity: 0
-        halign: "left"
-            
-
+    MDBoxLayout:
+        orientation: 'vertical'
+        TextInput:
+            size_hint: 1, 1
+            id: fname
+            text: ""
+            enabled: False
+            opacity: 0
+            halign: "left"
+        Label:
+            text_size: self.size
+            size_hint: 1, 0.2
+            id: run
+            halign: "left"
+            valign: "top"
+            text: '>>'
+            size: self.size
