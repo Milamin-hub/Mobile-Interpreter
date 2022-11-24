@@ -25,7 +25,7 @@ class Container(MDBoxLayout):
             p, file_ext = os.path.splitext(path)
             if file_ext == ".py":
                 self.exit_manager()
-                file = open('%s' % path, "r").readlines()
+                file = open("%s" % path, "r").readlines()
                 text = ""
                 for i in file:
                     text += i
@@ -46,7 +46,7 @@ class Container(MDBoxLayout):
     def save_file(self):
         try:
             name = os.path.basename(self.path)
-            with open('mobile_interpreture/assets/%s' % name, "w") as file:
+            with open("mobile_interpreture/assets/%s" % name, "w") as file:
                 file.write(self.ids.fname.text)
         except IsADirectoryError as e:
             print(e)
@@ -54,7 +54,7 @@ class Container(MDBoxLayout):
     def run_file(self):
         name = os.path.basename(self.path)
         try:
-            with open('mobile_interpreture/assets/%s' % name, "r") as file:
+            with open("mobile_interpreture/assets/%s" % name, "r") as file:
                 text = ""
                 for i in file:
                     text += i
@@ -63,7 +63,9 @@ class Container(MDBoxLayout):
                 exec(text)
                 sys.stdout = old_stdout
                 self.ids.run.text = redirected_output.getvalue().strip()
-        except Exception as e:
+        except FileNotFoundError as e:
+            print(e)
+        except IsADirectoryError as e:
             print(e)
         
 
@@ -79,5 +81,5 @@ class UIApp(MDApp):
         return Container()
         
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     UIApp().run()

@@ -2,3 +2,4 @@
 *venv
 *t.py
 **assets
+**__pycache__
