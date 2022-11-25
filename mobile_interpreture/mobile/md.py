@@ -1,5 +1,6 @@
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
+from kivymd.uix.button import MDIconButton
 from kivymd.app import MDApp
 from io import StringIO
 
@@ -15,6 +16,22 @@ class Container(MDBoxLayout):
             exit_manager=self.exit_manager,
             select_path=self.select_path,
             preview=False,
+        )
+        self.file_manager.add_widget(
+            MDIconButton(
+                pos_hint={'x': .860, 'y': .904},
+                pos=self.pos, 
+                icon="delete", 
+                on_release=self.delete_file
+            )   
+        )
+        self.file_manager.add_widget(
+            MDIconButton(
+                pos_hint={'x': .800, 'y': .904},
+                pos=self.pos, 
+                icon="plus", 
+                on_release=self.create_file
+            )   
         )
 
     def file_manager_open(self):
@@ -68,11 +85,16 @@ class Container(MDBoxLayout):
         except IsADirectoryError as e:
             print(e)
     
-    def create_file(self):
-        pass
+    def create_file(self, *args):
+        name = "p%s.py" % (int(len(os.listdir(path="mobile_interpreture/assets/"))) + 1)
+        if '%s' % name not in os.listdir(path="mobile_interpreture/assets/"):
+            with open('mobile_interpreture/assets/%s' % name, "w"):
+                pass
 
-    def delete_file(self):
-        pass
+    def delete_file(self, *args):
+        name = os.path.basename(self.path)
+        if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
+            os.remove("mobile_interpreture/assets/%s" % name)
         
 
 class UIApp(MDApp):
