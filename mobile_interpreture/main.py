@@ -11,18 +11,16 @@ class MobileApp(UIApp):
             os.mkdir("mobile_interpreture")
         if "assets" not in os.listdir(path="mobile_interpreture"):
             os.mkdir("mobile_interpreture/assets")
-        if len(os.listdir(path="mobile_interpreture/assets")) == 0:
+        if not len(os.listdir(path="mobile_interpreture/assets")):
             with open("mobile_interpreture/assets/p1.py", "w"):
                 pass
         
-    
     def build(self):
         return super().build()
 
 
 def main():
     mobile = MobileApp()
-
     mobile.run()
 
 

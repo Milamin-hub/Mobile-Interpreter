@@ -15,13 +15,8 @@
             md_bg_color: app.theme_cls.primary_dark
             MDBoxLayout:
                 spacing: 5
-                Label:
-                    text_size: self.size
-                    size_hint: 1, 0.2
-                    halign: "right"
-                    valign: "middle"
-                    text: ''
-                    size: self.size
+                halign: "right"
+                size: self.size
                 MDRaisedButton:
                     text: "run"
                     on_release:
@@ -51,3 +46,11 @@
             valign: "top"
             text: '>>'
             size: self.size
+
+<MDFileManager>
+    MDRoundFlatIconButton:
+        md_bg_color: app.theme_cls.primary_light
+        text: "delete"
+        icon: "delete"
+        pos_hint: {'x': .6, 'y': .9}
+        pos: self.pos

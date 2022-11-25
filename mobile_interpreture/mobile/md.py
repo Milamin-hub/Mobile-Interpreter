@@ -67,6 +67,12 @@ class Container(MDBoxLayout):
             print(e)
         except IsADirectoryError as e:
             print(e)
+    
+    def create_file(self):
+        pass
+
+    def delete_file(self):
+        pass
         
 
 class UIApp(MDApp):
