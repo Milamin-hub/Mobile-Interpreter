@@ -48,9 +48,15 @@
             size: self.size
 
 <MDFileManager>
-    MDRoundFlatIconButton:
-        md_bg_color: app.theme_cls.primary_light
-        text: "delete"
+    MDFloatingActionButton:
+        md_bg_color: app.theme_cls.primary_color
         icon: "delete"
-        pos_hint: {'x': .6, 'y': .9}
+        pos_hint: {'x': .9, 'y': .9}
         pos: self.pos
+    MDFloatingActionButton:
+        md_bg_color: app.theme_cls.primary_color
+        icon: "plus"
+        pos_hint: {'x': .8, 'y': .9}
+        pos: self.pos
+
+
