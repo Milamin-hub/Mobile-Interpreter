@@ -17,22 +17,6 @@ class Container(MDBoxLayout):
             select_path=self.select_path,
             preview=False,
         )
-        self.file_manager.add_widget(
-            MDIconButton(
-                pos_hint={'x': .860, 'y': .904},
-                pos=self.pos, 
-                icon="delete", 
-                on_release=self.delete_file
-            )   
-        )
-        self.file_manager.add_widget(
-            MDIconButton(
-                pos_hint={'x': .800, 'y': .904},
-                pos=self.pos, 
-                icon="plus", 
-                on_release=self.create_file
-            )   
-        )
 
     def file_manager_open(self):
         self.file_manager.show("mobile_interpreture/assets/")
@@ -85,13 +69,13 @@ class Container(MDBoxLayout):
         except IsADirectoryError as e:
             print(e)
     
-    def create_file(self, *args):
+    def create_file(self):
         name = "p%s.py" % (int(len(os.listdir(path="mobile_interpreture/assets/"))) + 1)
         if '%s' % name not in os.listdir(path="mobile_interpreture/assets/"):
             with open('mobile_interpreture/assets/%s' % name, "w"):
                 pass
 
-    def delete_file(self, *args):
+    def delete_file(self):
         name = os.path.basename(self.path)
         if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
             os.remove("mobile_interpreture/assets/%s" % name)

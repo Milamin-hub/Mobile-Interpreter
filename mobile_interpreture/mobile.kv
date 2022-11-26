@@ -17,6 +17,14 @@
                 spacing: 5
                 halign: "right"
                 size: self.size
+                MDIconButton:
+                    icon: "delete"
+                    on_release: 
+                        root.delete_file()
+                MDIconButton:
+                    icon: "plus"
+                    on_release:
+                        root.create_file()
                 MDRaisedButton:
                     text: "run"
                     on_release:
