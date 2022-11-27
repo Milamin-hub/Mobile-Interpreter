@@ -77,6 +77,8 @@ class Container(MDBoxLayout):
 
     def delete_file(self):
         name = os.path.basename(self.path)
+        self.ids.fname.opacity = 0
+        self.ids.fname.enabled = False
         if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
             os.remove("mobile_interpreture/assets/%s" % name)
         
