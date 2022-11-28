@@ -4,3 +4,6 @@
 **assets
 **__pycache__
 *t_f.py
+**.buildozer
+**bin
+*buildozer.spec
