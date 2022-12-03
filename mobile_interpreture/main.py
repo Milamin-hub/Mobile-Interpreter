@@ -1,28 +1,31 @@
-from mobile.md import UIApp
+from kivymd.app import MDApp
 
+from Controller.inter import MyContainer
+
+import sys
 import os
 
 
-class MobileApp(UIApp):
-    """ Mobile app сombines methods of two classes using inheritance """
-    def __init__(self, **kwargs) -> None:
+class MyApp(MDApp):
+
+    running = True
+
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.load_all_kv_files(self.directory)
         if "mobile_interpreture" not in os.listdir():
             os.mkdir("mobile_interpreture")
         if "assets" not in os.listdir(path="mobile_interpreture"):
             os.mkdir("mobile_interpreture/assets")
-        if not len(os.listdir(path="mobile_interpreture/assets")):
-            with open("mobile_interpreture/assets/p1.py", "w"):
-                pass
         
     def build(self):
-        return super().build()
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "Purple"
+        return MyContainer()
+
+    def on_stop(self):
+        self.running = False
 
 
-def main():
-    mobile = MobileApp()
-    mobile.run()
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    MyApp().run()

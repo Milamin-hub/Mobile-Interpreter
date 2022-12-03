@@ -1,15 +1,14 @@
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
-from kivymd.uix.button import MDIconButton
-from kivymd.app import MDApp
 from io import StringIO
+from kivy.lang import Builder
+
 
 import sys
 import os
 
-
-class Container(MDBoxLayout):
-    def __init__(self, **kwargs) -> None:
+class MyContainer(MDBoxLayout):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.path = ""
         self.file_manager = MDFileManager(
@@ -55,6 +54,7 @@ class Container(MDBoxLayout):
     def run_file(self):
         name = os.path.basename(self.path)
         try:
+            self.save_file()
             with open("mobile_interpreture/assets/%s" % name, "r") as file:
                 text = ""
                 for i in file:
@@ -64,9 +64,7 @@ class Container(MDBoxLayout):
                 exec(text)
                 sys.stdout = old_stdout
                 self.ids.run.text = redirected_output.getvalue().strip()
-        except FileNotFoundError as e:
-            print(e)
-        except IsADirectoryError as e:
+        except Exception as e:
             print(e)
     
     def create_file(self):
@@ -77,23 +75,10 @@ class Container(MDBoxLayout):
 
     def delete_file(self):
         name = os.path.basename(self.path)
+        text = "Welcome"
         self.ids.fname.opacity = 0
         self.ids.fname.enabled = False
         if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
             os.remove("mobile_interpreture/assets/%s" % name)
-        
-
-class UIApp(MDApp):
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
-
-    def build(self) -> Container:
-        """build window from class container to which 
-        the file with styles and components is attached interpreture.kv """
-        self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Purple"
-        return Container()
-        
-
-if __name__ == "__main__":
-    UIApp().run()
+            self.ids.filen.text = text
+            

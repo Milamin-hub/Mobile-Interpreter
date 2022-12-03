@@ -1,30 +1,37 @@
 
 
-<Container>:
+<MyContainer>:
     orientation: "vertical"
     MDBoxLayout:
         size_hint: 1, 0.1
         md_bg_color: app.theme_cls.primary_dark
-        Label:
+        MDLabel:
             size_hint: 0.3, 1
             id: filen
             text: "Welcome"
             md_bg_color: app.theme_cls.primary_dark
+            halign: "center"
+            valign: "top"
+            size: self.size
         MDTopAppBar:
             size_hint: 0.7, 1
             md_bg_color: app.theme_cls.primary_dark
             MDBoxLayout:
                 spacing: 5
-                halign: "right"
-                size: self.size
                 MDIconButton:
                     icon: "delete"
-                    on_release: 
-                        root.delete_file()
+                    on_release: root.delete_file()
                 MDIconButton:
                     icon: "plus"
                     on_release:
                         root.create_file()
+                MDLabel:
+                    text_size: self.size
+                    size_hint: 1, 1
+                    halign: "right"
+                    valign: "middle"
+                    text: ""
+                    size: self.size
                 MDRaisedButton:
                     text: "run"
                     on_release:
@@ -40,13 +47,13 @@
     MDBoxLayout:
         orientation: 'vertical'
         TextInput:
-            size_hint: 1, 1
+            size_hint: 1, 0.8
             id: fname
             text: ""
             enabled: False
             opacity: 0
             halign: "left"
-        Label:
+        MDLabel:
             text_size: self.size
             size_hint: 1, 0.2
             id: run
