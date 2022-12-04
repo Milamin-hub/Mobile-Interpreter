@@ -53,11 +53,16 @@
             enabled: False
             opacity: 0
             halign: "left"
-        MDLabel:
-            text_size: self.size
-            size_hint: 1, 0.2
-            id: run
-            halign: "left"
-            valign: "top"
-            text: '>>'
-            size: self.size
+        ScrollView:
+            do_scroll_x: True
+            do_scroll_y: True
+            size_hint: 1, 0.3
+            MDLabel:
+                id: run
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                padding: 10, 10
+                halign: "left"
+                valign: "top"
+                text: '>>'
