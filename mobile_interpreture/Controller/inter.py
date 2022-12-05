@@ -1,7 +1,6 @@
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
 from io import StringIO
-from kivy.lang import Builder
 
 
 import sys
@@ -37,8 +36,9 @@ class MyContainer(MDBoxLayout):
                 self.ids.filen.text = n
             else:
                 pass
-        except IsADirectoryError:
-            pass
+        except IsADirectoryError as e:
+            self.ids.run.color = (1,0,0,1)
+            self.ids.run.text = str(e)
         
     def exit_manager(self, *args):
         self.file_manager.close()
@@ -49,7 +49,8 @@ class MyContainer(MDBoxLayout):
             with open("mobile_interpreture/assets/%s" % name, "w") as file:
                 file.write(self.ids.fname.text)
         except IsADirectoryError as e:
-            print(e)
+            self.ids.run.color = (1,0,0,1)
+            self.ids.run.text = str(e)
         
     def run_file(self):
         name = os.path.basename(self.path)
@@ -59,13 +60,20 @@ class MyContainer(MDBoxLayout):
                 text = ""
                 for i in file:
                     text += i
-                old_stdout = sys.stdout
-                redirected_output = sys.stdout = StringIO()
-                exec(text)
-                sys.stdout = old_stdout
-                self.ids.run.text = redirected_output.getvalue().strip()
+                if not "input" in text and not "sleep" in text:
+                    old_stdout = sys.stdout
+                    redirected_output = sys.stdout = StringIO()
+                    exec(text)
+                    sys.stdout = old_stdout
+                    self.ids.run.text = redirected_output.getvalue().strip()
+                    self.ids.run.color = (1,1,1,1)
+                else:
+                    self.ids.run.color = (1,0,0,1)
+                    self.ids.run.text = "input or sleep don't work"
         except Exception as e:
-            print(e)
+            self.ids.run.color = (1,0,0,1)
+            self.ids.run.text = str(e)
+            
     
     def create_file(self):
         name = "p%s.py" % (int(len(os.listdir(path="mobile_interpreture/assets/"))) + 1)
@@ -81,4 +89,3 @@ class MyContainer(MDBoxLayout):
         if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
             os.remove("mobile_interpreture/assets/%s" % name)
             self.ids.filen.text = text
-            
