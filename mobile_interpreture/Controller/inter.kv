@@ -3,7 +3,7 @@
 <MyContainer>:
     orientation: "vertical"
     MDBoxLayout:
-        size_hint: 1, 0.1
+        size_hint: 1, 0.12
         md_bg_color: app.theme_cls.primary_dark
         MDLabel:
             size_hint: 0.3, 1
@@ -53,6 +53,8 @@
             enabled: False
             opacity: 0
             halign: "left"
+            background_color: (0,0,0,0)
+            foreground_color: (1,1,1,1)
         ScrollView:
             do_scroll_x: True
             do_scroll_y: True
@@ -62,6 +64,7 @@
                 size_hint_y: None
                 height: self.texture_size[1]
                 text_size: self.width, None
+                color: 1,1,1,1
                 padding: 10, 10
                 halign: "left"
                 valign: "top"
