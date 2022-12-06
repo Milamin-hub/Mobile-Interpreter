@@ -89,3 +89,6 @@ class MyContainer(MDBoxLayout):
         if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
             os.remove("mobile_interpreture/assets/%s" % name)
             self.ids.filen.text = text
+    
+    def custom_input(self):
+        pass
