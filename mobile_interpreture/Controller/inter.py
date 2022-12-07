@@ -1,5 +1,6 @@
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
+from kivymd.uix.textfield import MDTextField
 from io import StringIO
 
 
@@ -61,10 +62,9 @@ class MyContainer(MDBoxLayout):
                 for i in file:
                     text += i
                 if not "input" in text and not "sleep" in text:
-                    old_stdout = sys.stdout
                     redirected_output = sys.stdout = StringIO()
+                    compile("mobile_interpreture/assets/%s" % name, "test", "exec")
                     exec(text)
-                    sys.stdout = old_stdout
                     self.ids.run.text = redirected_output.getvalue().strip()
                     self.ids.run.color = (1,1,1,1)
                 else:
@@ -91,4 +91,8 @@ class MyContainer(MDBoxLayout):
             self.ids.filen.text = text
     
     def custom_input(self):
+        self.ids.input_text.opacity = 1
+        self.ids.input_text.enabled = True
+
+    def on_enter(self, instance):
         pass

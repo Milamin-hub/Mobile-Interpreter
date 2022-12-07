@@ -3,47 +3,35 @@
 <MyContainer>:
     orientation: "vertical"
     MDBoxLayout:
-        size_hint: 1, 0.12
+        orientation: 'horizontal'
+        size_hint: 1, None
+        size: self.size_hint_x, 50
         md_bg_color: app.theme_cls.primary_dark
+        spacing: 5
+        padding: 15, 0, 0, 0
         MDLabel:
-            size_hint: 0.3, 1
             id: filen
             text: "Welcome"
-            md_bg_color: app.theme_cls.primary_dark
-            halign: "center"
+        MDIconButton:
+            size_hint_y: 1
             valign: "top"
-            size: self.size
-        MDTopAppBar:
-            size_hint: 0.7, 1
-            md_bg_color: app.theme_cls.primary_dark
-            MDBoxLayout:
-                spacing: 5
-                MDIconButton:
-                    icon: "delete"
-                    on_release: root.delete_file()
-                MDIconButton:
-                    icon: "plus"
-                    on_release:
-                        root.create_file()
-                MDLabel:
-                    text_size: self.size
-                    size_hint: 1, 1
-                    halign: "right"
-                    valign: "middle"
-                    text: ""
-                    size: self.size
-                MDRaisedButton:
-                    text: "run"
-                    on_release:
-                        root.run_file()
-                MDRaisedButton:
-                    text: "save"
-                    on_release:
-                        root.save_file()
-                MDRaisedButton:
-                    text: "open"
-                    on_release:
-                        root.file_manager_open()
+            icon: "delete"
+            on_release: root.delete_file()
+        MDIconButton:
+            size_hint_y: 1
+            valign: "top"
+            icon: "plus"
+            on_release: root.create_file()
+        MDIconButton:
+            size_hint_y: 1
+            valign: "top"
+            icon: "play"
+            on_release: root.run_file()
+        MDIconButton:
+            size_hint_y: 1
+            valign: "top"
+            icon: "folder"
+            on_release: root.file_manager_open()
     MDBoxLayout:
         orientation: 'vertical'
         CodeInput:
@@ -58,7 +46,8 @@
         ScrollView:
             do_scroll_x: True
             do_scroll_y: True
-            size_hint: 1, 0.3
+            size_hint: 1, None
+            size: self.size_hint_x, 150
             MDLabel:
                 id: run
                 size_hint_y: None
