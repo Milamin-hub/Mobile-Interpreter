@@ -1,5 +1,7 @@
 # Mobile-Interpreter
-The application allows you to run python code on your phone
+![python3](https://img.shields.io/badge/python-v3.8-lightblue) ![GitHub commit activity](https://img.shields.io/badge/build-passing-green) ![Version](https://img.shields.io/badge/version-v0.0.1-darkgreen)
+- The application allows you to run python code on your phone
+
 ## Used Technologies
 - Python language
 - kivy framework 
