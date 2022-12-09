@@ -1,6 +1,5 @@
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
-from kivymd.uix.textfield import MDTextField
 from io import StringIO
 
 
@@ -89,10 +88,3 @@ class MyContainer(MDBoxLayout):
         if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
             os.remove("mobile_interpreture/assets/%s" % name)
             self.ids.filen.text = text
-    
-    def custom_input(self):
-        self.ids.input_text.opacity = 1
-        self.ids.input_text.enabled = True
-
-    def on_enter(self, instance):
-        pass
