@@ -1,12 +1,14 @@
-from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.filemanager import MDFileManager
-from io import StringIO
+from kivymd.uix.boxlayout import MDBoxLayout
 
+from io import StringIO
+from View.config import path, red, white 
 
 import sys
 import os
 
-class MyContainer(MDBoxLayout):
+
+class InterpretureView(MDBoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.path = ""
@@ -17,7 +19,7 @@ class MyContainer(MDBoxLayout):
         )
 
     def file_manager_open(self):
-        self.file_manager.show("mobile_interpreture/assets/")
+        self.file_manager.show(path)
 
     def select_path(self, path) -> str:
         try:
@@ -28,17 +30,17 @@ class MyContainer(MDBoxLayout):
                 text = ""
                 for i in file:
                     text += i
-                self.ids.fname.opacity = 1
-                self.ids.fname.enabled = True
-                self.ids.fname.text = text
+                self.ids.codeinput.opacity = 1
+                self.ids.codeinput.enabled = True
+                self.ids.codeinput.text = text
                 self.path = path
                 n = os.path.basename(self.path)
                 self.ids.filen.text = n
             else:
                 pass
         except IsADirectoryError as e:
-            self.ids.run.color = (1,0,0,1)
-            self.ids.run.text = str(e)
+            self.ids.terminal.color = red
+            self.ids.terminal.text = str(e)
         
     def exit_manager(self, *args):
         self.file_manager.close()
@@ -46,45 +48,45 @@ class MyContainer(MDBoxLayout):
     def save_file(self):
         try:
             name = os.path.basename(self.path)
-            with open("mobile_interpreture/assets/%s" % name, "w") as file:
-                file.write(self.ids.fname.text)
+            with open(path + name, "w") as file:
+                file.write(self.ids.codeinput.text)
         except IsADirectoryError as e:
-            self.ids.run.color = (1,0,0,1)
-            self.ids.run.text = str(e)
+            self.ids.terminal.color = red
+            self.ids.terminal.text = str(e)
         
     def run_file(self):
         name = os.path.basename(self.path)
         try:
             self.save_file()
-            with open("mobile_interpreture/assets/%s" % name, "r") as file:
+            with open(path + name, "r") as file:
                 text = ""
                 for i in file:
                     text += i
                 if not "input" in text and not "sleep" in text:
                     redirected_output = sys.stdout = StringIO()
-                    compile("mobile_interpreture/assets/%s" % name, "test", "exec")
+                    compile(path + name, "test", "exec")
                     exec(text)
-                    self.ids.run.text = redirected_output.getvalue().strip()
-                    self.ids.run.color = (1,1,1,1)
+                    self.ids.terminal.text = redirected_output.getvalue().strip()
+                    self.ids.terminal.color = white
                 else:
-                    self.ids.run.color = (1,0,0,1)
-                    self.ids.run.text = "input or sleep don't work"
+                    self.ids.terminal.color = red
+                    self.ids.terminal.text = "input or sleep don't work"
         except Exception as e:
-            self.ids.run.color = (1,0,0,1)
-            self.ids.run.text = str(e)
+            self.ids.terminal.color = red
+            self.ids.terminal.text = str(e)
             
     
     def create_file(self):
-        name = "p%s.py" % (int(len(os.listdir(path="mobile_interpreture/assets/"))) + 1)
-        if '%s' % name not in os.listdir(path="mobile_interpreture/assets/"):
-            with open('mobile_interpreture/assets/%s' % name, "w"):
+        name = "p%s.py" % (int(len(os.listdir(path))) + 1)
+        if '%s' % name not in os.listdir(path):
+            with open(path + name, "w"):
                 pass
 
     def delete_file(self):
         name = os.path.basename(self.path)
         text = "Welcome"
-        self.ids.fname.opacity = 0
-        self.ids.fname.enabled = False
-        if '%s' % name in os.listdir(path="mobile_interpreture/assets/"):
-            os.remove("mobile_interpreture/assets/%s" % name)
+        self.ids.codeinput.opacity = 0
+        self.ids.codeinput.enabled = False
+        if '%s' % name in os.listdir(path):
+            os.remove(path + name)
             self.ids.filen.text = text

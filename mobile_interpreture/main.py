@@ -1,12 +1,9 @@
+from View.inter import InterpretureView
 from kivymd.app import MDApp
-
-from Controller.inter import MyContainer
-
-import sys
 import os
 
 
-class MyApp(MDApp):
+class InterpretureApp(MDApp):
 
     running = True
 
@@ -21,11 +18,11 @@ class MyApp(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Purple"
-        return MyContainer()
+        return InterpretureView()
 
     def on_stop(self):
         self.running = False
 
 
 if __name__ == '__main__':
-    MyApp().run()
+    InterpretureApp().run()

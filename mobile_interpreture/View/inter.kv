@@ -1,15 +1,17 @@
 
 
-<MyContainer>:
+<InterpretureView>:
     orientation: "vertical"
     MDBoxLayout:
         orientation: 'horizontal'
         size_hint: 1, None
-        size: self.size_hint_x, 50
+        size: self.size_hint_x, 75
         md_bg_color: app.theme_cls.primary_dark
         spacing: 5
         padding: 15, 0, 0, 0
         MDLabel:
+            size_hint_y: 1
+            valign: "top"
             id: filen
             text: "Welcome"
         MDIconButton:
@@ -36,7 +38,7 @@
         orientation: 'vertical'
         CodeInput:
             size_hint: 1, 0.8
-            id: fname
+            id: codeinput
             text: ""
             enabled: False
             opacity: 0
@@ -47,9 +49,9 @@
             do_scroll_x: True
             do_scroll_y: True
             size_hint: 1, None
-            size: self.size_hint_x, 150
+            size: self.size_hint_x, 200
             MDLabel:
-                id: run
+                id: terminal
                 size_hint_y: None
                 height: self.texture_size[1]
                 text_size: self.width, None
