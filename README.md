@@ -8,7 +8,6 @@ The application allows you to run python code on your phone
 # Install project
 - git clone https://github.com/Milamin-hub/Mobile-Interpreter.git
 - cd mobile_interpreture
-- pip install 
 
 # Dependencies Ubuntu
 
@@ -68,4 +67,4 @@ cmake
 
 
 # Security Policy
--
+### Description in the [SECURITY.md](https://github.com/Milamin-hub/Mobile-Interpreter/blob/main/SECURITY.md) file
